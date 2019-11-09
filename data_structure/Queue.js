@@ -10,7 +10,7 @@
          this.items = {};
      }
 
-     push(value){
+     equeue(value){
          this.items[this.count] = value;
          this.count ++;
      }
@@ -49,12 +49,9 @@
          if (this.isEmpty()) {
              return "";
          }
-         let string = `${this.items[this.lowestCount]},`;
+         let string = `${this.items[this.lowestCount]}`;
          for (let index = this.lowestCount+1; index < this.count; index++) {
-            string += `${this.items[index]}`;
-            if (this.items[index+1]) {
-                string += ",";
-            }            
+            string =  `${string},${this.items[index]}`;            
         }
         return string;
      }

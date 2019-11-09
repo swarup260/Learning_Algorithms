@@ -80,12 +80,9 @@ class StackObject {
     }
     
     toString(){
-        let string = "";
+        let string = `${this.items[this.count]}`;
         for (let index = 0; index < this.count; index++) {
-            string += `${this.items[index]}`
-            if (this.items[index+1]) {
-                string += ",";
-            }
+            string = `${string} ,${this.items[index]}`
         }
         return string;
     }
