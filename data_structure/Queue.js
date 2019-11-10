@@ -16,7 +16,7 @@
      }
 
      /* remove the element which was insert first */
-     dequeue(value){
+     dequeue(){
          if (this.isEmpty()) {
              return undefined;
          }
