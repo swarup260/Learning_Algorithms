@@ -11,7 +11,7 @@ class Stack {
     }
 
     pop() {
-        this.items.pop()
+        return this.items.pop();
     }
 
     isEmpty() {
@@ -55,8 +55,11 @@ class StackObject {
         if (this.isEmpty()) {
             return undefined;
         }
+        let result = this.items[this.count-1];
         this.count --;
         delete this.items[this.count];
+        
+        return result;
     }
 
     isEmpty() {
@@ -80,9 +83,9 @@ class StackObject {
     }
     
     toString(){
-        let string = `${this.items[this.count]}`;
-        for (let index = 0; index < this.count; index++) {
-            string = `${string} ,${this.items[index]}`
+        let string = `${this.items[0]}`;
+        for (let index = 1; index < this.count; index++) {
+            string = `${string},${this.items[index]}`
         }
         return string;
     }
