@@ -10,4 +10,9 @@
      }
  }
 
- module.exports = {Node}
+
+const defaultEq = (a,b) => {
+    return a == b;
+}
+
+module.exports = { Node, defaultEq}
