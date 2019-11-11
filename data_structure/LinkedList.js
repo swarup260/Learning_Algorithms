@@ -18,11 +18,12 @@ class LinkedList {
         let current = this.head;
         if (this.head == undefined) {
             this.head = node;
+        }else{
+            while (current.next != null) {
+                current = current.next
+            }
+            current.next = node;
         }
-        while (current.next != null) {
-            current = current.next
-        }
-        current.next = node;
         this.count++;
         return;
     }
@@ -71,15 +72,16 @@ class LinkedList {
     removeAt(index) {
         if (this.isEmpty()) {
             return undefined;
-        }
-        if (index <= 0 && index < this.count) {
-
+        }        
+        if (index >= 0 && index < this.count) {
+            
             let current = this.head
             if (index == 0) {
                 this.head = current.next;
             } else {
-                let previous = this.getElementAt(index - 1);
-
+                let previous = this.getElementAt(index - 1);                
+                current = previous.next;
+                previous.next = current.next;
             }
             this.count--;
         }
