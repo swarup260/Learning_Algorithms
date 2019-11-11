@@ -61,7 +61,7 @@ class LinkedList {
 
     indexOf(value) {
         let current = this.head;
-        for (let index = 0; index < this.count; index++) {
+        for (let index = 0; index < this.count && current != null; index++) {
             if (current.value == value) {
                 return index;
             }
@@ -109,7 +109,16 @@ class LinkedList {
     }
 
     toString() {
-
+        if (this.isEmpty()) {
+            return  ""
+        }
+        let string = `${this.head.value}`;
+        let current = this.head.next;
+        for (let index = 1; index < this.count && current != null; index++) {
+            string = `${string} ,${current.value}`   
+            current = current.next;
+        }
+        return string;
     }
 
 }
