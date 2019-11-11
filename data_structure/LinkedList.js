@@ -1,5 +1,5 @@
 const {
-    Node
+    Node, defaultEq
 } = require("./Node");
 
 
@@ -7,9 +7,10 @@ const {
  * @class Linked List
  */
 class LinkedList {
-    constructor() {
+    constructor(func) {
         this.count = 0;
         this.head = undefined;
+        this.equalFunc = this.func || defaultEq;
     }
 
     push(value) {
@@ -17,22 +18,17 @@ class LinkedList {
         let current = this.head;
         if (this.head == undefined) {
             this.head = node;
-            this.count++;
-            return;
-
         }
         while (current.next != null) {
             current = current.next
         }
-        this.count++;
         current.next = node;
+        this.count++;
         return;
     }
 
-    insert(value, postion) {        
-        if (postion >= 0  && postion < this.count) {
-            console.log();
-            
+    insert(value, postion) {
+        if (postion >= 0 && postion < this.count) {
             const node = new Node(value);
             let current = this.head;
             if (postion == 0) {
@@ -41,22 +37,19 @@ class LinkedList {
                 }
                 this.head = node;
                 node.next = current;
-                this.count++;
-                return;
             } else {
-                let previous = this.getElementAt(postion-1);
+                let previous = this.getElementAt(postion - 1);
                 current = previous.next;
                 node.next = current;
                 previous.next = node;
-                this.count++;
             }
         }
-        return this;
+        this.count++;
     }
 
     getElementAt(index) {
         let node = this.head;
-        if (index >= 0  && index < this.count) {
+        if (index >= 0 && index < this.count) {
             for (let i = 0; i < index; i++) {
                 node = node.next;
             }
@@ -79,6 +72,18 @@ class LinkedList {
         if (this.isEmpty()) {
             return undefined;
         }
+        if (index <= 0 && index < this.count) {
+
+            let current = this.head
+            if (index == 0) {
+                this.head = current.next;
+            } else {
+                let previous = this.getElementAt(index - 1);
+
+            }
+            this.count--;
+        }
+        return undefined;
     }
 
     isEmpty() {
