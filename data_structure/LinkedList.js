@@ -60,13 +60,25 @@ class LinkedList {
     }
 
     indexOf(value) {
-
+        let current = this.head;
+        for (let index = 0; index < this.count; index++) {
+            if (current.value == value) {
+                return index;
+            }
+            current = current.next;
+        }
+        return -1;
     }
 
     remove(value) {
         if (this.isEmpty()) {
             return undefined;
         }
+        let index = this.indexOf(value);
+        if (index != -1) {
+            this.removeAt(index);
+        }
+        return undefined;
     }
 
     removeAt(index) {
