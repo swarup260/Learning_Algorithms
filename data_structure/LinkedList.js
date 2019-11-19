@@ -2,7 +2,6 @@ const {
     Node, defaultEq
 } = require("./Node");
 
-
 /**
  * @class Linked List
  */
@@ -10,7 +9,7 @@ class LinkedList {
     constructor(func) {
         this.count = 0;
         this.head = undefined;
-        this.equalFunc = this.func || defaultEq;
+        this.equalFunc = func || defaultEq;
     }
 
     push(value) {
@@ -115,7 +114,7 @@ class LinkedList {
         let string = `${this.head.value}`;
         let current = this.head.next;
         for (let index = 1; index < this.count && current != null; index++) {
-            string = `${string} ,${current.value}`   
+            string = `${string}, ${current.value}`   
             current = current.next;
         }
         return string;
