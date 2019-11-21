@@ -1,4 +1,4 @@
-exports.toStringFunc = function (key) {
+function toStringFunc(key) {
     if (key == null) {
         return 'NULL'
     }
@@ -6,7 +6,12 @@ exports.toStringFunc = function (key) {
         return 'UNDEFINED'
     }
     if ((typeof key == "string" ) || key instanceof String) {
-        return key;
+        return `${key}`;
     }
     return key.toString();
+}
+
+
+module.exports = {
+    toStringFunc
 }
