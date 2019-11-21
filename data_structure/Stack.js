@@ -71,7 +71,7 @@ class StackObject {
     }
 
     size() {
-        return this.items.length;
+        return this.count;
     }
 
     clear() {
@@ -79,6 +79,7 @@ class StackObject {
             this.pop()
         } */
         this.items = {};
+        this.count = 0;
         return this.items;
     }
     
