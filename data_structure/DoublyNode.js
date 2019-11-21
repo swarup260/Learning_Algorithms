@@ -8,8 +8,8 @@ const {
 
 
 class DoublyNode extends Node {
-    constructor(value, next, previous) {
-        super(value, next);
+    constructor(element, next, previous) {
+        super(element, next);
         this.previous = previous;
     }
 }

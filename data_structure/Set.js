@@ -7,22 +7,22 @@ class Set {
         this.items = {};
     }
 
-    has(value) {
-        /* return value in this.items; */
-        return Object.prototype.hasOwnProperty.call(this.items, value);
+    has(element) {
+        /* return element in this.items; */
+        return Object.prototype.hasOwnProperty.call(this.items, element);
     }
 
-    add(value) {
-        if (!this.has(value)) {
-            this.items[value] = value;
+    add(element) {
+        if (!this.has(element)) {
+            this.items[element] = element;
             return true;
         }
         return false;
     }
 
-    delete(value) {
-        if (this.has(value)) {
-            delete this.items[value];
+    delete(element) {
+        if (this.has(element)) {
+            delete this.items[element];
             return true;
         }
         return false;
@@ -41,15 +41,15 @@ class Set {
     }
 
 
-    values(){
-        /* return Object.values(this.items); */
-        let values = [];
+    elements(){
+        /* return Object.elements(this.items); */
+        let elements = [];
         for (const key in this.items) {
             if (this.items.hasOwnProperty(key)) {
-                values.push(key);
+                elements.push(key);
             }
         }
-        return values;
+        return elements;
     }
 
     union(otherSet){
@@ -57,10 +57,10 @@ class Set {
             throw new Error("Must be Instance Of Set");
         }
         const unionSet = new Set();
-        this.values().forEach(element => {
+        this.elements().forEach(element => {
             unionSet.add(element);
         });
-        otherSet.values().forEach(element => {
+        otherSet.elements().forEach(element => {
             unionSet.add(element);
         });
 
@@ -72,7 +72,7 @@ class Set {
             throw new Error("Must be Instance Of Set");
         }
         const intersectionSet = new Set();
-        this.values().forEach(element => {
+        this.elements().forEach(element => {
             if (otherSet.has(element)) {
                 intersectionSet.add(element);
             }
@@ -85,7 +85,7 @@ class Set {
             throw new Error("Must be Instance Of Set");
         }
         const differenceSet = new Set();
-        this.values().forEach(element => {
+        this.elements().forEach(element => {
             if (!otherSet.has(element)) {
                 differenceSet.add(element);
             }
@@ -100,7 +100,7 @@ class Set {
             return false;
         }
         let isSubset  = true;
-        this.values().every(element => {
+        this.elements().every(element => {
             if (!otherSet.has(element)) {
                 isSubset = false;
                 return;
@@ -112,7 +112,7 @@ class Set {
     }
 
     toString(){
-        return this.values().toString();
+        return this.elements().toString();
     }
 }
 

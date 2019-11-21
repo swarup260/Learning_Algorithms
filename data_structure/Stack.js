@@ -6,8 +6,8 @@ class Stack {
         this.items = [];
     }
 
-    push(value) {
-        this.items.push(value);
+    push(element) {
+        this.items.push(element);
     }
 
     pop() {
@@ -46,8 +46,8 @@ class StackObject {
         this.items = {};
     }
 
-    push(value) {
-        this.items[this.count] = value;
+    push(element) {
+        this.items[this.count] = element;
         this.count++;
     }
 

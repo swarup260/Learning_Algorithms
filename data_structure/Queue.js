@@ -10,8 +10,8 @@
          this.items = {};
      }
 
-     equeue(value){
-         this.items[this.count] = value;
+     equeue(element){
+         this.items[this.count] = element;
          this.count ++;
      }
 

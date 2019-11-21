@@ -12,8 +12,8 @@ class LinkedList {
         this.equalFunc = func || defaultEq;
     }
 
-    push(value) {
-        const node = new Node(value);
+    push(element) {
+        const node = new Node(element);
         let current = this.head;
         if (this.head == undefined) {
             this.head = node;
@@ -27,9 +27,9 @@ class LinkedList {
         return;
     }
 
-    insert(value, postion) {
+    insert(element, postion) {
         if (postion >= 0 && postion < this.count) {
-            const node = new Node(value);
+            const node = new Node(element);
             let current = this.head;
             if (postion == 0) {
                 if (this.head == undefined) {
@@ -58,10 +58,10 @@ class LinkedList {
         return undefined;
     }
 
-    indexOf(value) {
+    indexOf(element) {
         let current = this.head;
         for (let index = 0; index < this.count && current != null; index++) {
-            if (current.value == value) {
+            if (current.element == element) {
                 return index;
             }
             current = current.next;
@@ -69,11 +69,11 @@ class LinkedList {
         return -1;
     }
 
-    remove(value) {
+    remove(element) {
         if (this.isEmpty()) {
             return undefined;
         }
-        let index = this.indexOf(value);
+        let index = this.indexOf(element);
         if (index != -1) {
             this.removeAt(index);
         }
@@ -111,10 +111,10 @@ class LinkedList {
         if (this.isEmpty()) {
             return  ""
         }
-        let string = `${this.head.value}`;
+        let string = `${this.head.element}`;
         let current = this.head.next;
         for (let index = 1; index < this.count && current != null; index++) {
-            string = `${string}, ${current.value}`   
+            string = `${string}, ${current.element}`   
             current = current.next;
         }
         return string;

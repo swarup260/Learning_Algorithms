@@ -9,22 +9,22 @@ class Dequeue {
         this.lowestCount = 0;
     }
 
-    addFront(value) {
+    addFront(element) {
         if (this.isEmpty()) {
-            this.addBack(value);
+            this.addBack(element);
         } else if (this.lowestCount  > 0) {
             this.lowestCount --;
-            this.items[this.lowestCount] = value;
+            this.items[this.lowestCount] = element;
         } else {
             for (let index = this.count; index > 0; index--) {
                 this.items[index] =  this.items[index -1];
             }
             this.count ++;
-            this.items[0] = value;
+            this.items[0] = element;
         }
     }
-    addBack(value) {
-        this.items[this.count] = value;
+    addBack(element) {
+        this.items[this.count] = element;
         this.count++;
     }
     removeFront() {
