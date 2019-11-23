@@ -120,6 +120,16 @@ class LinkedList {
         return string;
     }
 
+    toArray(){
+        let elements = [];
+        let current = this.head;
+        while(this.count && current != null){
+            elements.push(current.element);
+            current = current.next;
+        }
+        return elements;
+    }
+
 }
 
 
