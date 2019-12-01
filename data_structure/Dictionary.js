@@ -5,7 +5,9 @@
 const {
     KeyValue
 } = require('./KeyValue');
-const {toStringFunc} = require('../utils/function');
+const {
+    toStringFunc
+} = require('../utils/function');
 
 class Dictionary {
     constructor(toStrFn = toStringFunc) {
@@ -59,7 +61,7 @@ class Dictionary {
         return false;
     }
 
-    isEmpty() {        
+    isEmpty() {
         return Object.keys(this.table).length == 0;
     }
     size() {
@@ -73,7 +75,7 @@ class Dictionary {
         let keyValuePairs = this.keyValues();
         let string = `${keyValuePairs[0].toString()}`
         for (let index = 1; index < keyValuePairs.length; index++) {
-            string = `${string}, ${keyValuePairs[index].toString()}`   
+            string = `${string}, ${keyValuePairs[index].toString()}`
         }
         return string;
     }
