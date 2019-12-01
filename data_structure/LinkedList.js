@@ -2,6 +2,7 @@ const {
     Node, defaultEq
 } = require("./Node");
 
+const {}
 /**
  * @class Linked List
  */
@@ -10,6 +11,13 @@ class LinkedList {
         this.count = 0;
         this.head = undefined;
         this.equalFunc = func || defaultEq;
+    }
+
+    getHead(){
+        if (this.isEmpty()) {
+            return undefined;
+        }
+        return this.head.element;
     }
 
     push(element) {
@@ -28,7 +36,7 @@ class LinkedList {
     }
 
     insert(element, postion) {
-        if (postion >= 0 && postion < this.count) {
+        if (postion >= 0 && postion <= this.count) {
             const node = new Node(element);
             let current = this.head;
             if (postion == 0) {
@@ -95,6 +103,7 @@ class LinkedList {
                 previous.next = current.next;
             }
             this.count--;
+            return current.element;
         }
         return undefined;
     }
