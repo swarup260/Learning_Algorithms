@@ -16,11 +16,11 @@ class HashTableSeparateChaining extends HashTable {
     put(key, value) {
         if (key != null && value != null) {
 
-            const keyHash = this.getHasCode(key);
-            if (this.table[keyHash] == null) {
-                this.table[keyHash] = new LinkedList();
+            const hashKey = this.getHasCode(key);
+            if (this.table[hashKey] == null) {
+                this.table[hashKey] = new LinkedList();
             }
-            this.table[keyHash].push(new KeyValue(key, value));
+            this.table[hashKey].push(new KeyValue(key, value));
             return true;
         }
 
@@ -28,8 +28,8 @@ class HashTableSeparateChaining extends HashTable {
     }
 
     get(key) {
-        const keyHash = this.getHasCode(key);
-        const linkedList = this.table[keyHash];
+        const hashKey = this.getHasCode(key);
+        const linkedList = this.table[hashKey];
         if (linkedList.size() > 0 && !linkedList.isEmpty()) {
             let current = linkedList.getHead();
             while (current.next != null) {
@@ -42,15 +42,15 @@ class HashTableSeparateChaining extends HashTable {
         return undefined;
     }
     remove(key) {
-        const keyHash = this.getHasCode(key);
-        const linkedList = this.table[keyHash];
+        const hashKey = this.getHasCode(key);
+        const linkedList = this.table[hashKey];
         if (linkedList.size() > 0 && !linkedList.isEmpty()) {
             let current = linkedList.getHead();
             while (current.next != null) {
                 if (current.element.key == key) {
                     linkedList.remove(current.element);
                     if (linkedList.isEmpty()) { 
-                        delete this.table[keyHash]; 
+                        delete this.table[hashKey]; 
                     }
                     return current.element;
                 }
