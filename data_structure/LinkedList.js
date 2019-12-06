@@ -1,6 +1,6 @@
 const {
     Node, defaultEq
-} = require("./Node");
+} = require("./models/Node");
 
 /**
  * @class Linked List

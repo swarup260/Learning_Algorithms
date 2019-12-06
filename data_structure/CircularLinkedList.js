@@ -1,5 +1,5 @@
 const {LinkedList} = require('./LinkedList');
-const {Node} = require('./Node');
+const {Node} = require('./models/Node');
 /**
  * @class Circular Linked List 
  */

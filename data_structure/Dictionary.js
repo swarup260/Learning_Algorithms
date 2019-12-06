@@ -4,7 +4,7 @@
 
 const {
     KeyValue
-} = require('./KeyValue');
+} = require('./models/KeyValue');
 const {
     toStringFunc
 } = require('../utils/function');
@@ -83,7 +83,7 @@ class Dictionary {
     forEach(callback) {
         let keyValuePairs = this.keyValues();
         for (let index = 0; index < keyValuePairs.length; index++) {
-            const result = callback(keyValuesPair[index].key, keyValuesPair[index].value);
+            const result = callback(keyValuePairs[index].key, keyValuePairs[index].value);
             if (result == false) {
                 break;
             }

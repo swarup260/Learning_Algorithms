@@ -7,7 +7,7 @@ const {
 } = require('./LinkedList');
 const {
     DoublyNode
-} = require('./DoublyNode');
+} = require('./models/DoublyNode');
 
 class DoubleLinkedList extends LinkedList {
     constructor(func) {

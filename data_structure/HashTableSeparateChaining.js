@@ -6,7 +6,7 @@ const {
 } = require('./LinkedList');
 const {
     KeyValue
-} = require('./KeyValue');
+} = require('./models/KeyValue');
 
 class HashTableSeparateChaining extends HashTable {
     constructor() {

@@ -3,7 +3,7 @@ const {
 } = require('./HashTable');
 const {
     KeyValue
-} = require('./KeyValue');
+} = require('./models/KeyValue');
 
 
 
