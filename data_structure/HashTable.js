@@ -1,6 +1,6 @@
 const {
     KeyValue
-} = require('./KeyValue');
+} = require('./models/KeyValue');
 const {
     toStringFunc
 } = require('../utils/function');
@@ -59,6 +59,46 @@ class HashTable {
             hash = (hash * 33) + tableKey.charCodeAt(i); // {4}
         }
         return hash % 1013; // {5}
+    }
+
+    isEmpty() {
+        return Object.keys(this.table).length == 0;
+    }
+    size() {
+        return Object.keys(this.table).length;
+    }
+
+    keyValues() {
+        const keyValuePairs = [];
+        for (const key in this.table) {
+            if (this.table.hasOwnProperty(key)) {
+                keyValuePairs.push(this.table[key])
+            }
+        }
+        return keyValuePairs;
+    }
+    
+    toString() {
+        if (this.isEmpty()) {
+            return "";
+        }
+        let keyValuePairs = this.keyValues();
+        let string = `${keyValuePairs[0].toString()}`
+        for (let index = 1; index < keyValuePairs.length; index++) {
+            string = `${string}, ${keyValuePairs[index].toString()}`
+        }
+        return string;
+    }
+
+    forEach(callback) {
+        let keyValuePairs = this.keyValues();
+        for (let index = 0; index < keyValuePairs.length; index++) {
+            const result = callback(keyValuePairs[index].key, keyValuePairs[index].value);
+            if (result == false) {
+                break;
+            }
+
+        }
     }
 
 }
