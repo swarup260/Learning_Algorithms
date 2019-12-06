@@ -52,6 +52,15 @@ class HashTable {
         return this.table[keyHash] != null ? this.table[keyHash].value : undefined;
     }
 
+    djb2HashCode(key) {
+        const tableKey = toStringFunc(key); // {1}
+        let hash = 5381; // {2}
+        for (let i = 0; i < tableKey.length; i++) { // {3}
+            hash = (hash * 33) + tableKey.charCodeAt(i); // {4}
+        }
+        return hash % 1013; // {5}
+    }
+
 }
 
 
