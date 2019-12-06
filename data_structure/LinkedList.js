@@ -2,7 +2,6 @@ const {
     Node, defaultEq
 } = require("./Node");
 
-const {}
 /**
  * @class Linked List
  */
