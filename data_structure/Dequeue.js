@@ -47,6 +47,23 @@ class Dequeue {
         this.count--;
         return result;
     }
+
+    peekFront(){
+        if (this.isEmpty()) {
+            return undefined;
+        }
+        return this.items[this.lowestCount];
+    }
+
+    peekBack(){
+        if (this.isEmpty()) {
+            return undefined;
+        }
+        return this.items[this.count -1];
+    }
+
+
+
     isEmpty() {
         return this.count - this.lowestCount == 0;
     }
