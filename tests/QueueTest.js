@@ -19,7 +19,7 @@ describe("Queue", function () {
         queue.equeue("Roshan");
         assert.equal(queue.size(),2);
     });
-    it('Peek element "Swarup" since its first element of the queue', function () {
+    it('Peek element will be "Swarup" since its first element of the queue', function () {
         queue.equeue("Shreyash");
         assert.equal(queue.peek(),"Swarup");
     });
