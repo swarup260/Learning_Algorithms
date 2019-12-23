@@ -6,10 +6,10 @@ const {
  * @class Linked List
  */
 class LinkedList {
-    constructor(func) {
+    constructor(equalFunc = defaultEq) {
         this.count = 0;
         this.head = undefined;
-        this.equalFunc = func || defaultEq;
+        this.equalFunc = equalFunc;
     }
 
     getHead(){
@@ -68,7 +68,7 @@ class LinkedList {
     indexOf(element) {
         let current = this.head;
         for (let index = 0; index < this.count && current != null; index++) {
-            if (current.element == element) {
+            if (this.equalFunc(current.element,element)) {
                 return index;
             }
             current = current.next;
