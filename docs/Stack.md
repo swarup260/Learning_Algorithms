@@ -17,7 +17,7 @@
 
 There are two ways in which stack can implement in javascript one way by using Array or using javascript object( object is a set of key & value).As  Array already have *push* method to insert an element at end of the array,  *pop* method to remove an element, to get the length of the array it has a property *length* which returns the size of the array if the length is equal to zero then the array is empty. you get the full source [here](https://github.com/swarup260/Learning_Algorithms/blob/master/data_structure/Stack.js)
 
-###Implementation of Stack using Javascript Objects
+### Implementation of Stack using Javascript Objects
 
 let's define __ES6 class__ name Stack, with two properties, *count* which will keep track of the number of elements in the stack and *items* an object which will store the elements as value and count as key.
 
