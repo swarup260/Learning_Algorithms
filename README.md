@@ -1,6 +1,6 @@
 # Learning_Algorithms
 
-## List Of Algorithms
+## List Of Data Structures 
 * [Stack](./docs/Stack.md)
 * [Queue](./docs/Queue.md)
 * [Deque](./docs/Deque.md)
