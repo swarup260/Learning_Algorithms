@@ -6,7 +6,7 @@
 * [Deque](./docs/Deque.md)
 * Linked List
   * [Single Linked List](./docs/SingleLinkedList.md)
-  * Doubly Linked List
+  * [Doubly Linked List](./docs/DoublyLinkedList.md)
   * Circular Linked List
   * Sorted Linked List
 * Sets
