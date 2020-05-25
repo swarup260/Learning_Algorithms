@@ -5,7 +5,7 @@
 
 
 ##List Of Operations Available
-* All methods will same as __[single linked list](https://dev.to/swarup260/data-structures-algorithms-in-javascript-single-linked-list-part-1-3ghg)__.We only override the *insert*, *push* and *removeAt* methods.
+* All methods will same as __[single linked list](https://dev.to/swarup260/data-structures-algorithms-in-javascript-single-linked-list-part-1-3ghg)__.We only overwrite the *insert*, *push* and *removeAt* methods.
 
 ##Implementation of Doubly linked list in Javascript
 
