@@ -2,76 +2,148 @@ const {
     BinarySearchTree
 } = require('./BinarySearchTree');
 const TreeNode = require('./models/TreeNode');
-
 const {
     defaultCompare,
     Compare
 } = require('../utils/function');
 
-
-const BalancedFactor = {
-    SLIGHTY_BALANCED_RIGHT: 1,
-    SLIGHTY_BALANCED_LEFT: 2,
-    BALANCED_LEFT: 3,
-    BALANCED_RIGHT: 4,
-    BALANCED: 5,
+const BalanceFactor = {
+    UNBALANCED_RIGHT: 1,
+    SLIGHTLY_UNBALANCED_RIGHT: 2,
+    BALANCED: 3,
+    SLIGHTLY_UNBALANCED_LEFT: 4,
+    UNBALANCED_LEFT: 5
 }
 
 
-class AVLTree extends BinarySearchTree {
+class AVL extends BinarySearchTree {
     constructor(compareFun = defaultCompare) {
         super(compareFun);
     }
 
-    getHeightFactor(node) {
+    getNodeHeight(node) {
         if (node == null) {
             return -1;
         }
-        return Math.max(this.getHeightFactor(node.left), this.getHeightFactor(node.right)) + 1;
+        return Math.max(this.getNodeHeight(node.left), this.getNodeHeight(node.right)) + 1;
     }
 
-    getBalanceFactor(node) {
-        const heightDifference = this.getHeightFactor(node.left) - this.getBalanceFactor(node.right);
+    getBalancedFactor(node) {
+        const heightDifference = this.getNodeHeight(node.left) - this.getNodeHeight(node.right);
         switch (heightDifference) {
             case -2:
-                return BalancedFactor.SLIGHTY_BALANCED_RIGHT;
+                return BalanceFactor.UNBALANCED_RIGHT;
+                break;
             case -1:
-                return BalancedFactor.SLIGHTY_BALANCED_RIGHT;
+                return BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT;
+                break;
             case 1:
-                return BalancedFactor.SLIGHTY_BALANCED_RIGHT;
+                return BalanceFactor.SLIGHTLY_UNBALANCED_LEFT;
+                break;
             case 2:
-                return BalancedFactor.SLIGHTY_BALANCED_RIGHT;
+                return BalanceFactor.UNBALANCED_LEFT;
+                break;
             default:
-                return BalancedFactor.BALANCED;
+                return BalanceFactor.BALANCED;
         }
     }
 
-
-    rotationLL(node){
+    LLRotation(node) {
         const tmp = node.left;
-        node.left = node.right;
-        node.right = node;
+        node.right = tmp.left;
+        tmp.right = node;
         return tmp;
+
     }
-    rotationRR(node){
+
+    RRRotation(node) {
         const tmp = node.right;
-        node.right = node.left;
-        node.left = node;
+        node.left = tmp.right;
+        tmp.left = node;
         return tmp;
     }
-    rotationLR(node){
-        node.left = this.rotationLL(node);
-        return this.rotationRR(node);
-    }
-    rotationRL(node){
-        node.right = this.rotationLL(node);
-        return this.rotationRR(node);
+
+    RLRotation(node) {
+        node.right = this.LLRotation(node);
+        return this.RRRotation(node);
     }
 
+    LRRotation(node) {
+        node.left = this.RRRotation();
+        return this.LLRotation(node);
+    }
+
+    insert(key) {
+        this.root = this.insertNode(this.root, key);
+    }
+
+    insertNode(node, key) {
+        if (node == null) {
+            return new TreeNode(key);
+        } else if (this.compareFun(key, node.element) == Compare.LESS_THAN) {
+            node.left = this.insertNode(node.left, key);
+        } else if (this.compareFun(key, node.element) == Compare.BIGGER_THAN) {
+            node.right = this.insertNode(node.right, key);
+        } else {
+            return node;
+        }
+
+        // Balanced Factore 
+        const balanceFactor = this.getBalancedFactor(node);
+        if (balanceFactor == BalanceFactor.UNBALANCED_LEFT) {
+            if (this.compareFun(key, node.left.element) == Compare.LESS_THAN) {
+                node = this.LLRotation(node);
+            } else {
+                return this.LRRotation(node);
+            }
+        } else if (balanceFactor == BalanceFactor.UNBALANCED_RIGHT) {
+            if (this.compareFun(key, node.left.element) == Compare.BIGGER_THAN) {
+                node = this.RRRotation(node);
+            } else {
+                return this.RLRotation(node);
+            }
+        }
+
+    }
+
+    removeNode(node, element) {
+        super.removeNode(element);
+        if (node == null) {
+            return null;
+        }
+
+        const balanceFactor = this.getBalancedFactor(node);
+        if (balanceFactor == BalanceFactor.UNBALANCED_LEFT) {
+            const balanceFactorLeft = this.getBalancedFactor(node.left);
+            if (balanceFactorLeft == BalanceFactor.BALANCED || BalanceFactor.SLIGHTLY_UNBALANCED_LEFT) {
+                node = this.LLRotation(node);
+            }
+            if (balanceFactorLeft == BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT) {
+                return this.LRRotation(node);
+            }
 
 
+        } else if (balanceFactor == BalanceFactor.UNBALANCED_RIGHT) {
+            const balanceFactorRight = this.getBalancedFactor(node.right);
+            if (balanceFactorRight == BalanceFactor.BALANCED || BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT) {
+                node = this.RRRotation(node);
+            }
+            if (balanceFactorRight == BalanceFactor.SLIGHTLY_UNBALANCED_LEFT) {
+                return this.RLRotation(node);
+            }
+        }
+
+    }
 
 }
 
 
-module.exports = AVLTree;
+
+const avl = new BinarySearchTree();
+avl.insert(10);
+avl.insert(5);
+avl.insert(2);
+avl.insert(7);
+avl.insert(6);
+avl.preOrderTraverse((x) => console.log(x));
+module.exports = AVL;
