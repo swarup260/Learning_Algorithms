@@ -166,16 +166,6 @@ class RedBlackTree extends BinarySearchTree {
 }
 
 
-const rbTree = new RedBlackTree();
-// const rbTree = new BinarySearchTree();
-rbTree.insert(10);
-rbTree.insert(15);
-rbTree.insert(7);
-rbTree.remove(10);
-console.log(rbTree);
-
-rbTree.inOrderTraverse(node => console.log(node));
-
 module.exports = {
     RedBlackTree
 }
