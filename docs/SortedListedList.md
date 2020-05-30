@@ -63,7 +63,7 @@ While Insert an element in SortedLinkedList, There are two scenarios:-
     }
 
 ```
-you get the full source [here](https://github.com/swarup260/Learning_Algorithms/blob/master/data_structure/LinkedList.js)
+you get the full source [here](https://github.com/swarup260/Learning_Algorithms/blob/master/data_structure/SortedLinkedList.js)
 
 # Conclusion 
 The complexity of the Sorted Linked List will be the same as Single Linked List. 
