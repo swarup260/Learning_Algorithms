@@ -50,7 +50,7 @@ class AVL extends BinarySearchTree {
 
     LLRotation(node) {
         const tmp = node.left;
-        node.right = tmp.left;
+        node.left = tmp.right;
         tmp.right = node;
         return tmp;
 
@@ -58,18 +58,18 @@ class AVL extends BinarySearchTree {
 
     RRRotation(node) {
         const tmp = node.right;
-        node.left = tmp.right;
+        node.right = tmp.left;
         tmp.left = node;
         return tmp;
     }
 
     RLRotation(node) {
-        node.right = this.LLRotation(node);
+        node.right = this.LLRotation(node.right);
         return this.RRRotation(node);
     }
 
     LRRotation(node) {
-        node.left = this.RRRotation();
+        node.left = this.RRRotation(node.left);
         return this.LLRotation(node);
     }
 
@@ -139,11 +139,4 @@ class AVL extends BinarySearchTree {
 
 
 
-const avl = new BinarySearchTree();
-avl.insert(10);
-avl.insert(5);
-avl.insert(2);
-avl.insert(7);
-avl.insert(6);
-avl.preOrderTraverse((x) => console.log(x));
 module.exports = AVL;
