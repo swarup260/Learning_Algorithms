@@ -8,7 +8,7 @@
   * [Single Linked List](./docs/SingleLinkedList.md)
   * [Doubly Linked List](./docs/DoublyLinkedList.md)
   * [Circular Linked List](./docs/CircularLinkedList.md)
-  * Sorted Linked List
+  * [Sorted Linked List](./docs/SortedListedList.md)
 * Sets
 * Hash Table
   * Separate Chain
