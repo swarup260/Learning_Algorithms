@@ -107,9 +107,9 @@ class AVL extends BinarySearchTree {
     }
 
     removeNode(node, element) {
-        super.removeNode(element);
+        node = super.removeNode(node,element);
         if (node == null) {
-            return null;
+            return null; //no need to balance
         }
 
         const balanceFactor = this.getBalancedFactor(node);

@@ -79,10 +79,11 @@ class BinarySearchTree {
     }
 
     minNode(node) {
-        while (node.left != null) {
-            node = node.left;
+        let current = node;
+        while (current != null && current.left != null) {
+            current = node.left;
         }
-        return node.element;
+        return current;
     }
 
     max() {
@@ -90,10 +91,11 @@ class BinarySearchTree {
     }
 
     maxNode(node) {
-        while (node.right != null) {
-            node = node.right;
+        let current = node;
+        while (current != null && current.right != null) {
+            current = node.right;
         }
-        return node.element;
+        return current;
     }
 
     search(element) {
