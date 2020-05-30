@@ -1,100 +1,181 @@
-const { Colors, RedBlack } = require('./models/RedBlackNode');
-const { BinarySearchTree } = require('./BinarySearchTree');
-const { defaultCompare,Compare } = require('../utils/function')
+const {
+    Colors,
+    RedBlackNode
+} = require('./models/RedBlackNode');
+const {
+    BinarySearchTree
+} = require('./BinarySearchTree');
+const {
+    defaultCompare,
+    Compare
+} = require('../utils/function')
 class RedBlackTree extends BinarySearchTree {
-    constructor(compareFunc = defaultCompare){
+    constructor(compareFunc = defaultCompare) {
         super(compareFunc);
     }
 
-    insert(key){
+    insert(key) {
         if (this.root == null) {
-            this.root = new RedBlack(key);
+            this.root = new RedBlackNode(key);
             // Root Node Must be Black
-            this.root.Colors =  Colors.BLACK
+            this.root.Colors = Colors.BLACK
         } else {
-            this.insertNode(this.root , key);
+            const newNode = this.insertNode(this.root, key);
+            this.fixTreeProperties(newNode);
         }
-        this.fixTreeProperties(this.root);
     }
 
-    insertNode(node, key){
-        if (this.compareFun(key ,node.element) == Compare.LESS_THAN) {
+    insertNode(node, key) {
+        if (this.compareFun(key, node.element) == Compare.LESS_THAN) {
             if (node.left == null) {
-                node.left = new RedBlack(key);
+                node.left = new RedBlackNode(key);
                 node.left.parent = node
+            } else {
+                return this.insertNode(node.left, key);
             }
-            this.insertNode(node.left,key);
-        } else if (this.compareFun(key, node.element) == Compare.BIGGER_THAN){
+        } else if (this.compareFun(key, node.element) == Compare.BIGGER_THAN) {
             if (node.right == null) {
-                node.right = new RedBlack(key);
+                node.right = new RedBlackNode(key);
                 node.right.parent = node;
+            } else {
+                return this.insertNode(node.right, key);
             }
-            this.insertNode(node.left, key);
-        }else{
-            node;
         }
-
     }
     // Recoloring or Rotating
-    fixTreeProperties(node){
-        while (node && node.parent && node.parent.isRed() && node.parent != Colors.BLACK) {
-            let parent  = node.parent;
+    fixTreeProperties(node) {
+        while (node && node.parent && node.parent.isRed() && node.parent.color != Colors.BLACK) {
+            let parent = node.parent;
             let grandParent = parent.parent;
-            // Case A :  uncle is Right
+            // Case A : parent is left 
             if (grandParent && grandParent.left == parent) {
+                // Case 1A : Recoloring  
                 let uncle = grandParent.right;
-
-                // Case 1A : Uncle is Red 
                 if (uncle && uncle.isRed()) {
+                    // If the node is red then its descendent will be BLACK
                     grandParent.color = Colors.RED;
                     parent.color = Colors.BLACK;
                     uncle.color = Colors.BLACK;
+                    node = grandParent;
                 }
-                // Case 2A : Node is Rigt Child
-                if (node) {
-                    
-                }else{
 
+                // Case 2A : parent is rigth LR Rotation
+                if (node == parent.right) {
+                    this.LRRotation(parent);
+                    node = parent;
+                    parent = node.parent;
                 }
-                // Case 1A : Node is left CHild
+                // Case 3A : parent is left LL Rotation
+                this.LLRotation(grandParent);
+                parent.color = Colors.BLACK;
+                grandParent.color = Colors.RED;
+                node = parent;
 
-
-
-
-
-            }else{
-                // Case B :  uncle is Right
+            } else {
                 let uncle = grandParent.left;
-                // Case 1B : Uncle is Red 
-                if (condition) {
-
+                if (uncle && uncle.isRed()) {
+                    // If the node is red then its descendent will be BLACK
+                    grandParent.color = Colors.RED;
+                    parent.color = Colors.BLACK;
+                    uncle.color = Colors.BLACK;
+                    node = grandParent;
                 }
-                // Case 2B : Node is Rigt Child
-                // Case 1B : Node is left CHild
+
+                // Case 2A : parent is left RL Rotation
+                if (node == parent.left) {
+                    this.RLRotation(parent);
+                    node = parent;
+                    parent = node.parent;
+                }
+                // Case 3A : parent is left RR Rotation
+                this.RRRotation(grandParent);
+                parent.color = Colors.BLACK;
+                grandParent.color = Colors.RED;
+                node = parent;
 
             }
+
+
         }
         this.root.color = Colors.BLACK;
     }
 
-    LLRotation(node){
-        
-    }
-    LRRotation(node){
+    LLRotation(node) {
+        const tmp = node.left;
+        node.right = tmp.left;
+        if (tmp.right && tmp.right.element) {
+            tmp.right.parent = node;
+        }
+        tmp.parent = node.parent;
+        if (!node.parent) {
+            this.root = tmp;
+        } else {
+
+            if (node === node.parent.left) {
+                node.parent.left = tmp;
+            } else {
+                node.parent.right = tmp;
+            }
+
+
+        }
+        tmp.right = node;
+        node.parent = tmp;
 
     }
-    RRRotation(node){
+    RRRotation(node) {
+        const tmp = node.right;
+        node.left = tmp.right;
+        if (tmp.left && tmp.left.element) {
+            tmp.left.parent = node;
+        }
+        tmp.parent = node.parent;
+        if (!node.parent) {
+            this.root = tmp;
+        } else {
 
+            if (node === node.parent.left) {
+                node.parent.left = tmp;
+            } else {
+                node.parent.right = tmp;
+            }
+
+
+        }
+        tmp.left = node;
+        node.parent = tmp;
     }
-    RLRotation(node){
-
+    LRRotation(node) {
+        node.left = this.RRRotation(node.left);
+        return this.RRRotation(node);
+    }
+    RLRotation(node) {
+        node.right = this.LLRotation(node.right);
+        return this.LLRotation(node);
     }
 
+    removeNode(node, element) {
+        const newNode = super.removeNode(node, element);
+        if (node == null) {
+            return null;
+        }
+        this.fixTreeProperties(newNode);
+        return newNode;
+    }
+
+}
 
 
+const rbTree = new RedBlackTree();
+// const rbTree = new BinarySearchTree();
+rbTree.insert(10);
+rbTree.insert(15);
+rbTree.insert(7);
+rbTree.remove(10);
+console.log(rbTree);
 
+rbTree.inOrderTraverse(node => console.log(node));
 
-
-
-
+module.exports = {
+    RedBlackTree
 }
