@@ -68,4 +68,3 @@ you get the full source [here](https://github.com/swarup260/Learning_Algorithms/
 # Conclusion 
 The complexity of the Sorted Linked List will be the same as Single Linked List. 
 
-So, stay tuned for the next blog, in which I will cover another DS SET
