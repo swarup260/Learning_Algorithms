@@ -1,68 +1,55 @@
-const { MaxHeap } = require('../../data_structure/MaxHeap');
+const {
+    MaxHeap
+} = require('../../data_structure/MaxHeap');
 const {
     defaultCompare,
     Compare
 } = require('../../utils/function');
 
-// function HeapSort(array) {
-//     let heapSize = array.length;
-//     buildMaxHeap(array, defaultCompare);
-//     while (heapSize > 1) {
-//         swap(array, 0, --heapSize); // step 2
-//         heapify(array, 0, heapSize, defaultCompare); // step 3
-//     }
-//     return array;
-// }
-function heapSort(array, compareFn = defaultCompare) {
-    let heapSize = array.length;
-    buildMaxHeap(array, compareFn); // step 1
-    while (heapSize > 1) {
-        console.log(heapSize);
-        
-        swap(array, 0, --heapSize); // step 2        
-        heapify(array, 0, heapSize, compareFn); // step 3
+function swap(arr, a, b) {
+    const tmp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = tmp;
+}
+
+function builMaxHeap(arr, compareFun) {
+    for (let index = (arr.length / 2) - 1; index >= 0; index--) {
+        heapify(arr, arr.length, index, compareFun)
     }
-    return array;
+    return arr;
 }
 
-function buildMaxHeap(array, compareFn) {
-    for (let i = Math.floor(array.length / 2); i >= 0; i -= 1) {
-        heapify(array, i, array.length, compareFn);
-    }
-    return array;
-}
-// function BuildMaxHeap(array) {
-//     const heap = new MaxHeap();
-//     for (let index = 0; index < array.length; index++) {
-//         heap.insert(array[index]);
-//     }
-//     return heap;
-// }
-
-
-function swap(array , a ,b) {
-    const tmp = array[a];
-    array[a] =  array[b];
-    array[b] = tmp;
-}
-
-function heapify(array ,index,length , compareFunc) {
+function heapify(arr, length, index, compareFun) {
     let element = index;
-    const left = (index * 2) +1;
-    const right = (index * 2) +2;    
-    const size = length;
-    if (left < size && compareFunc(array[element], array[left])  > Compare.BIGGER_THAN ) {
+    let left = (2 * index) + 1;
+    let right = (2 * index) + 2;
+    
+    if (left < length && compareFun(arr[element], arr[left]) ==  Compare.LESS_THAN) {
         element = left;
     }
-    if (right < size && compareFunc(array[element], array[right])  > Compare.BIGGER_THAN ) {
+    if (right < length && compareFun(arr[element], arr[right])  ==  Compare.LESS_THAN) {
         element = right;
     }
-    if (index !== element) {
-        swap(array,index,element);
-        heapfiy(element);
+
+    if (element != index) {
+        swap(arr, index, element);
+        heapify(arr, length, element, compareFun);
     }
+
+
 }
 
 
-const array = [10,4,2,5,7,20];
-console.log(heapSort(array));
+function HeapSort(arr, compareFun = defaultCompare) {
+    let heapSize = arr.length;
+    builMaxHeap(arr, compareFun);
+    while (heapSize > 1) {
+        swap(arr, 0, --heapSize);
+        heapify(arr, heapSize, 0, compareFun);
+    }
+    return arr;
+}
+
+
+// console.log('Heap Sort', HeapSort([12, 11, 5,4, 6, 7, 0,13]));
+console.log('Heap Sort', HeapSort([0, 4, 5, 6, 7, 11, 12, 13 ]));
