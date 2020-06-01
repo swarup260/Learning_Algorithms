@@ -53,7 +53,7 @@ class MinHeap {
     //Return the Min Values in Case of MinHeap 
     //Return the Max Values in Case of MaxHeap 
     extract() {
-        if (this.isEmpty) {
+        if (this.isEmpty()) {
             return undefined;
         }
         if (this.size() == 1) {
@@ -86,8 +86,8 @@ class MinHeap {
     }
 
     findMinimum() {
-        if (!this.isEmpty()) {
-            this.heap[0];
+        if (!this.isEmpty()) {            
+            return this.heap[0];
         }
         return undefined;
     }
