@@ -36,8 +36,10 @@ class MinHeap {
 
     siftUp(index) {
         let parent = this.getParentIndex(index);
-        while (index > 0 && this.compareFunc()) {
-
+        while (index > 0 && this.compareFunc(this.heap[parent], this.heap[index]) == Compare.BIGGER_THAN ) {
+            this.swap(this.heap,parent,index);
+            index = parent;
+            parent = this.getParentIndex(index);
         }
     }
 
@@ -64,8 +66,23 @@ class MinHeap {
     }
 
 
+    //Heapify
     siftDown(index){
+        let element = index;
+        let left = this.getLeftChildIndex(index);
+        let right = this.getRightChildIndex(index);
+        const size = this.size();
+        if (left < size && this.compareFunc(this.heap[element], this.heap[left]) > Compare.BIGGER_THAN) {
+            element = left;
+        }
+        if (right < size && this.compareFunc(this.heap[element], this.heap[right]) > Compare.BIGGER_THAN) {
+            element = right;
+        }
 
+        if (index !== element) {
+            this.swap(this.heap,index,element);
+            this.siftDown(element);
+        }
     }
 
     findMinimum() {

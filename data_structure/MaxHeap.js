@@ -5,16 +5,16 @@ const {
 
 const {MinHeap} = require('./MinHeap');
 
-const reverseCompare =  (compareFunc) => (a,b) => compareFunc(b,a); 
+const reverseCompare = (compareFunc) => (a, b) => compareFunc(b, a)
 
-class Maxheap extends MinHeap {
+class MaxHeap extends MinHeap {
     constructor(compareFunc = defaultCompare){
-        super();
-        compareFunc =  reverseCompare(compareFunc);
+        super(compareFunc);
+        this.compareFunc =  reverseCompare(compareFunc);
     }
 }
 
 
 module.exports = {
-    Maxheap 
+    MaxHeap 
 }
