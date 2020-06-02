@@ -51,5 +51,6 @@ function HeapSort(arr, compareFun = defaultCompare) {
 }
 
 
-// console.log('Heap Sort', HeapSort([12, 11, 5,4, 6, 7, 0,13]));
-console.log('Heap Sort', HeapSort([0, 4, 5, 6, 7, 11, 12, 13 ]));
+module.exports = {
+    HeapSort
+};
