@@ -30,52 +30,6 @@ const Kruskal = graph => {
 }
 
 
-const InitializeCost = (graph, length) => {
-    const cost = [];
-
-    for (let i = 0; i < length; i++) {
-        cost[i] = [];
-        for (let j = 0; j < length; j++) {
-            if (i === j) {
-                cost[i][j] = 0
-            } else if (graph[i][j]) {
-                cost[i][j] = graph[i][j];
-            } else {
-                cost[i][j] = INF;
-            }
-
-        }
-
-    }
-    return cost;
-}
-
-/**
- * check if the cycle is form or not
- * @param {Number} i 
- * @param {Array} parent 
- */
-const find = (i , parent) => {
-    while(parent[i]){
-        i = parent[i]
-    }
-    return i;
-}
-
-/**
- * 
- * @param {Number} i 
- * @param {Number} j 
- * @param {Array} parent 
- */
-const union = (i,j,parent) => {
-    if (i !== j) {
-        parent[j] = i;
-        return true;
-
-    }
-    return false;
-}
 
 // var graph = [
 //     [0, 2, 4, 0, 0, 0],
