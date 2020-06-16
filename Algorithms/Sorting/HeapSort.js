@@ -1,17 +1,14 @@
 const {
-    MaxHeap
-} = require('../../data_structure/MaxHeap');
-const {
     defaultCompare,
-    Compare
+    Compare,
+    swap
 } = require('../../utils/function');
 
-function swap(arr, a, b) {
-    const tmp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = tmp;
-}
-
+/**
+ * 
+ * @param {Array} arr 
+ * @param {Function} compareFun 
+ */
 function builMaxHeap(arr, compareFun) {
     for (let index = (arr.length / 2) - 1; index >= 0; index--) {
         heapify(arr, arr.length, index, compareFun)
@@ -19,6 +16,13 @@ function builMaxHeap(arr, compareFun) {
     return arr;
 }
 
+/**
+ * 
+ * @param {Array} arr 
+ * @param {Number*} length 
+ * @param {Number} index 
+ * @param {Function} compareFun 
+ */
 function heapify(arr, length, index, compareFun) {
     let element = index;
     let left = (2 * index) + 1;
@@ -39,7 +43,12 @@ function heapify(arr, length, index, compareFun) {
 
 }
 
-
+/**
+ * Sort the Element in a given array
+ * complexity of Heap Sort is O(n*long n)
+ * @param {Array} arr 
+ * @param {Function} compareFun 
+ */
 function HeapSort(arr, compareFun = defaultCompare) {
     let heapSize = arr.length;
     builMaxHeap(arr, compareFun);

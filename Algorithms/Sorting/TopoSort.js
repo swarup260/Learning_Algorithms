@@ -1,5 +1,7 @@
 /**
- * 
+ * complexity of Topo/Top Sort is O(v+e)
+ * v -> Vertices of graph
+ * e -> Edges of graph
  * @param {*} graph 
  */
 const topSort = graph => {

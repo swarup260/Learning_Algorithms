@@ -22,8 +22,9 @@ const InsertionSort = (array, compareFunc = defaultCompare) => {
     return array;
 }
 
-
-// console.log(InsertionSort([5, 3, 1, 0, -1]));
+// console.time('InsertionSort')
+// console.log(InsertionSort([5, 3, 10 ,1, 0, -1,7]));
+// console.timeEnd('InsertionSort')
 module.exports = {
     InsertionSort
 }

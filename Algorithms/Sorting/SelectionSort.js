@@ -5,7 +5,8 @@ const {
 } = require('../../utils/function');
 
 /**
- * 
+ * Sort the Element in a given array
+ * complexity of Selection Sort is O(n^2)
  * @param {Array} array 
  * @param {Function} compareFun 
  */
@@ -32,6 +33,9 @@ const SelectionSort = (array, compareFun = defaultCompare) => {
     return array;
 
 }
+// console.time('SelectionSort')
+// console.log(SelectionSort([5, 3, 10 ,1, 0, -1,7]));
+// console.timeEnd('SelectionSort')
 
 module.exports = {
     SelectionSort

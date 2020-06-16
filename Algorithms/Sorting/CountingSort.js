@@ -76,7 +76,10 @@ const CountingSortForNegative = array => {
     return array;
 }
 
-
+/**
+ * 
+ * @param {Array} array 
+ */
 const findMinMax = array => {
     let min = Number.MAX_SAFE_INTEGER,
         max = array[0];

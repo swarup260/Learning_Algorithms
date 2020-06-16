@@ -4,7 +4,8 @@ const {
     swap
 } = require('../../utils/function');
 /**
- * 
+ * Sort the Element in a given array
+ * complexity of Bubble Sort is O(n^2)
  * @param {Array} array 
  * @param {Function} compareFun 
  */
@@ -29,7 +30,9 @@ const BubbleSort = (array, compareFun = defaultCompare) => {
     return array;
 }
 /**
- * 
+ * Sort the Element in a given array
+ * complexity of Bubble Sort is O(n^2)
+ * Inner Loop Optimized
  * @param {Array} array 
  * @param {Function} compareFun 
  */
@@ -53,7 +56,7 @@ const BubbleSortImporved = (array, compareFun = defaultCompare) => {
 // console.log(BubbleSort([10, 4, 7, 3, -1, 0, -6]));
 // console.timeEnd('BubbleSort')
 // console.time('BubbleSortImporved')
-// console.log(BubbleSortImporved([10, 4, 7, 3, -1, 0, -6]));
+// console.log(BubbleSortImporved([5, 3, 10 ,1, 0, -1,7]));
 // console.timeEnd('BubbleSortImporved')
 
 module.exports = {

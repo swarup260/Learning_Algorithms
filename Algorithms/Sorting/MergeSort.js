@@ -25,7 +25,7 @@ const MergeSort = (array, compareFunc = defaultCompare) => {
 }
 
 /**
- * 
+ *  Merge Two Array
  * @param {Array} left 
  * @param {Array} right 
  * @param {Function} compareFunc 
@@ -37,12 +37,13 @@ const merge = (left, right, compareFunc) => {
     while (i < left.length && j < right.length) {
         result.push(compareFunc(left[i], right[j]) == Compare.LESS_THAN ? left[i++] : right[j++]);
     }
+    console.log(result)
     return result.concat(i < left.length ? left.slice(i) : right.slice(j));
 }
 
-console.time('MergeSort');
-console.log(MergeSort([5, 3, 10 ,1,2, 0, -1,7]));
-console.timeEnd('MergeSort');
+// console.time('MergeSort');
+// console.log(MergeSort([5, 3, 10, 1, 2, 0, -1, 7]));
+// console.timeEnd('MergeSort');
 module.exports = {
     MergeSort
 }
