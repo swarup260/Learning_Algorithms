@@ -98,7 +98,14 @@ const findMinMax = array => {
     }
 }
 
-console.time('CountingSort');
-console.log(CountingSortForNegative([5, 3, 3, 10, 1, 2, 0, -1, -3, 7, 7, 7, 7, 7, 7, 7]));
-// console.log(CountingSortForNegative([5, 4, 3, 2, 3, 1, 0]));
-console.timeEnd('CountingSort');
+// console.time('CountingSort');
+// console.log(CountingSortForNegative([5, 3, 3, 10, 1, 2, 0, -1, -3, 7, 7, 7, 7, 7, 7, 7]));
+// // console.log(CountingSortForNegative([5, 4, 3, 2, 3, 1, 0]));
+// console.timeEnd('CountingSort');
+
+
+module.exports = {
+    CountingSort,
+    CountingSortForNegative,
+    findMinMax
+}
