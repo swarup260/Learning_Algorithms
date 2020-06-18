@@ -39,10 +39,13 @@ const swap = (array , index , nextIndex) => {
     [array[index] , array[nextIndex] ] = [ array[nextIndex] , array[index]];
 }
 
+const defaultEqualFun = (a, b) => a == b;
+
 
 module.exports = {
     toStringFunc,
     defaultCompare,
     Compare,
-    swap
+    swap,
+    defaultEqualFun
 }
