@@ -9,7 +9,7 @@
   * [Doubly Linked List](./docs/DoublyLinkedList.md)
   * [Circular Linked List](./docs/CircularLinkedList.md)
   * [Sorted Linked List](./docs/SortedListedList.md)
-* Sets
+* [Sets](./docs/Set.md)
 * Hash Table
   * Separate Chain
   * Linear Probing
