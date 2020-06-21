@@ -37,7 +37,6 @@ const merge = (left, right, compareFunc) => {
     while (i < left.length && j < right.length) {
         result.push(compareFunc(left[i], right[j]) == Compare.LESS_THAN ? left[i++] : right[j++]);
     }
-    console.log(result)
     return result.concat(i < left.length ? left.slice(i) : right.slice(j));
 }
 

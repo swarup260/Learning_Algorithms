@@ -12,7 +12,6 @@ const {
  * @returns array
  */
 const QuickSort = (array, compareFunc = defaultCompare) => {
-    console.log(array.length);
     return quick(array, 0, array.length - 1, compareFunc);
 }
 
@@ -33,7 +32,6 @@ const quick = (array, left, right, compareFunc) => {
 
 const partition = (array, left, right, compareFunc) => {
     const pivot = array[Math.floor((left + right) / 2)];
-    console.log(pivot)
     let i = left , j =right ;
     while (i <= j) {
         while (compareFunc(array[i], pivot) == Compare.LESS_THAN) {
