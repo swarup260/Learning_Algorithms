@@ -1,4 +1,4 @@
-utils/function.jsfunction toStringFunc(key) {
+function toStringFunc(key) {
     if (key == null) {
         return 'NULL'
     }
