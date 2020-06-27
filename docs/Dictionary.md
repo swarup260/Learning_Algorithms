@@ -20,7 +20,10 @@ Hello Everyone, this is part 10 in the series of blogs about data structures and
 
 ### Implementation of Dictionary in Javascript 
 
-Let
+We start by defining a class, __Dictionary__ with property __*table*__.
+Property table will javascript object which will holds items in it.
+In a  dictionary,  the ideal would be to store keys of type string and any type of value (from primitive type such as numbers, a string, to complex objects). However, because JavaScript is not strongly typed, we cannot guarantee the key will be a string .i.e,
+> We first transform the key whatever object is passed as the key into a string to make it easier to search and retrieve values from the Dictionary class.
 
 
 ```javascript 
@@ -31,6 +34,7 @@ Let
         }
     }
 ```
+
 ## Set  
 ```javascript 
     set(key, value) {
