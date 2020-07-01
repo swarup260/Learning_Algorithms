@@ -35,7 +35,12 @@ In a  dictionary,  the ideal would be to store keys of type string and any type 
     }
 ```
 
-## Set  
+## Set
+When inserting a key-value pair, we will check if the key & value is not null. else : 
+* Stringify the key using the default string method
+* Create a new instance of KeyPair.
+* Add the stringify value as the key and value as the instance of Keypair.
+
 ```javascript 
     set(key, value) {
         if (key != null & value != null) {
@@ -47,6 +52,7 @@ In a  dictionary,  the ideal would be to store keys of type string and any type 
     }
 ```
 ## HasKey
+To check if the key is present or not, We will Stringify the key and check if its present or not.
 
 ```javascript 
 
@@ -55,7 +61,7 @@ In a  dictionary,  the ideal would be to store keys of type string and any type 
     }
 ``` 
 ## Remove
-
+When removing a key-value pair, We will check if the key is present in the Dictionary using the HasKey method. If present then deletes the key-value pair.
 ```javascript 
     remove(key) {
         if (this.hasKey(key)) {
