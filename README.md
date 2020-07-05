@@ -14,7 +14,7 @@
   * [Circular Linked List](./docs/CircularLinkedList.md)
   * [Sorted Linked List](./docs/SortedListedList.md)
 * [Sets](./docs/Set.md)
-* Dictionary
+* [Dictionary](./docs/Dictionary.md)
 * Hash Table
   * Separate Chain
   * Linear Probing

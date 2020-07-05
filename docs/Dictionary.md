@@ -1,6 +1,5 @@
-Hello Everyone, this is part 10 in the series of blogs about data structures and algorithms in JavaScript. In this blog, I will cover the Dictionary Data Structure.
-
 # What is a Dictionary?
+
 > *A dictionary is a general-purpose data structure for storing a group of objects. A dictionary has a set of keys and each key has a single associated value.* - *[Wikibooks](https://en.wikibooks.org/wiki/A-level_Computing/AQA/Paper_1/Fundamentals_of_data_structures/Dictionaries#:~:text=A%20dictionary%20is%20a%20general,has%20a%20single%20associated%20value.&text=Different%20languages%20enforce%20different%20type,often%20implemented%20as%20hash%20tables.)*
 
 
@@ -20,11 +19,12 @@ Hello Everyone, this is part 10 in the series of blogs about data structures and
 
 ### Implementation of Dictionary in Javascript 
 
-We start by defining a class, __Dictionary__ with property __*table*__.
-Property table will javascript object which will holds items in it.
+We start by defining a class, __Dictionary__ with property a __*table*__.
+Property table will be javascript Object which will holds items in it.
 In a  dictionary,  the ideal would be to store keys of type string and any type of value (from primitive type such as numbers, a string, to complex objects). However, because JavaScript is not strongly typed, we cannot guarantee the key will be a string .i.e,
 > We first transform the key whatever object is passed as the key into a string to make it easier to search and retrieve values from the Dictionary class.
 
+>  Values will be Stored as __table[stringify(Key)] = new KeyValues(key,value)__;
 
 ```javascript 
     class Dictionary {
@@ -34,12 +34,32 @@ In a  dictionary,  the ideal would be to store keys of type string and any type 
         }
     }
 ```
+> Default String Stringify function 
+```javascript
 
+function toStringFunc(key) {
+    if (key == null) {
+        return 'NULL'
+    }
+    if (key == undefined) {
+        return 'UNDEFINED'
+    }
+    if ((typeof key == "string") || key instanceof String) {
+        return `${key}`;
+    }
+    return key.toString();
+}
+
+```
 ## Set
-When inserting a key-value pair, we will check if the key & value is not null. else : 
+When inserting a key-value pair, we will check if the key & value is not null. 
+
+Else : 
 * Stringify the key using the default string method
 * Create a new instance of KeyPair.
 * Add the stringify value as the key and value as the instance of Keypair.
+
+> Dictionary Keys are unique.You can't have two or more keys to the same value . if present then it will just override the old value with the new one.
 
 ```javascript 
     set(key, value) {
@@ -51,6 +71,20 @@ When inserting a key-value pair, we will check if the key & value is not null. e
         return false;
     }
 ```
+### KeyValue Class
+```javascript
+
+     class KeyValue{
+     constructor(key, value){
+         this.key = key;
+         this.value = value;
+     }
+     toString(){
+         return `[#${this.key} , ${this.value}]`
+     }
+ }
+
+```
 ## HasKey
 To check if the key is present or not, We will Stringify the key and check if its present or not.
 
@@ -61,7 +95,8 @@ To check if the key is present or not, We will Stringify the key and check if it
     }
 ``` 
 ## Remove
-When removing a key-value pair, We will check if the key is present in the Dictionary using the HasKey method. If present then deletes the key-value pair.
+When removing a key-value pair, We first need to check if the key is present in the Dictionary using the HasKey method. If present then deletes the key-value pair.
+
 ```javascript 
     remove(key) {
         if (this.hasKey(key)) {
@@ -72,7 +107,10 @@ When removing a key-value pair, We will check if the key is present in the Dicti
     }
 ``` 
 ## get
-
+If a key-value pair, with a key, exists then return value or else null.
+As we know that we first we stringify the key and set that as the Object key and value as the instance of KeyValue. ie.
+* Stringify the key. 
+* Return the stringify key's KeyValue value.
 ```javascript 
 
     get(key) {
@@ -81,6 +119,11 @@ When removing a key-value pair, We will check if the key is present in the Dicti
     }
 ```
 ## KeyValues
+
+This method will return  all the stored  *key-value pair* in the __Dictionary class__,
+* Initialize an array *keyValuePairs*
+* Iterate *table* property, if the key exists then push to  keyValuePairs array
+* Return the keyValuePairs.
 
 ```javascript 
     keyValues() {
@@ -95,6 +138,7 @@ When removing a key-value pair, We will check if the key is present in the Dicti
 ```
 
 ## Keys
+This method returns all the key-value pairs keys. We will evoke the KeyValues extract the __keys__ using [Array.prototype.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map). Alternative use can also do the same thing using for loop.
 
 ```javascript 
 
@@ -103,6 +147,7 @@ When removing a key-value pair, We will check if the key is present in the Dicti
     }
 ```
 ## Values
+This method returns all the key-value pairs values. We will evoke the KeyValues extract the __values__ using Array.prototype.map
 
 ```javascript 
 
@@ -112,7 +157,10 @@ When removing a key-value pair, We will check if the key is present in the Dicti
 ```
 
 
-## ForEach 
+## ForEach
+ForEach is an iterator function, Which allows us to loop the all  key-value pair present in the Dictionary class. But, the same can be applied for other data structures too.
+* We evoke the KeyValues and get all the key-value pairs.
+* We will iterate over the individual pairs and execute the callback until the condition is true. 
 
 ```javascript 
     forEach(callback) {
@@ -129,7 +177,7 @@ When removing a key-value pair, We will check if the key is present in the Dicti
 
 you get the full source [here](https://github.com/swarup260/Learning_Algorithms/blob/master/data_structure/Dictionary.js)
 
-
+> [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) ES6 ,Is similar to Dictionary . 
 
 ### Conclusion : 
 
@@ -143,5 +191,4 @@ you get the full source [here](https://github.com/swarup260/Learning_Algorithms/
 | values        | O(n)          | 
 | KeyValues     | O(n)          | 
 | forEach       | O(n)          | 
-
 
