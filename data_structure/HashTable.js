@@ -23,14 +23,14 @@ class HashTable {
     }
 
 
-    getHasCode(key) {
+    getHashCode(key) {
         return this._loseloseHashCode(key);
     }
 
 
     put(key, value) {
         if (key != null && value != null) {
-            const keyHash = this.getHasCode(key);
+            const keyHash = this.getHashCode(key);
             this.table[keyHash] = new KeyValue(key, value);
             return true;
         }
@@ -38,7 +38,7 @@ class HashTable {
     }
 
     remove(key) {
-        const keyHash = this.getHasCode(key);
+        const keyHash = this.getHashCode(key);
         if (this.table[keyHash]) {
             const value = this.table[keyHash];
             delete this.table[keyHash];
@@ -48,7 +48,7 @@ class HashTable {
     }
 
     get(key) {
-        const keyHash = this.getHasCode(key);
+        const keyHash = this.getHashCode(key);
         return this.table[keyHash] != null ? this.table[keyHash].value : undefined;
     }
 

@@ -14,7 +14,7 @@ class HashTableLinearProbing extends HashTable {
 
     put(key, value) {
         if (key != null && value != null) {
-            const hashKey = this.getHasCode(key);
+            const hashKey = this.getHashCode(key);
             if (this.table[hashKey] == null) {
                 this.table[hashKey] = new KeyValue(key, value);
             } else {
@@ -31,7 +31,7 @@ class HashTableLinearProbing extends HashTable {
     }
 
     get(key) {
-        const hashKey = this.getHasCode(key);
+        const hashKey = this.getHashCode(key);
         if (this.table[hashKey] != null) {
             if (this.table[hashKey].key == key) {
                 return this.table[hashKey].value;
@@ -50,7 +50,7 @@ class HashTableLinearProbing extends HashTable {
     }
 
     remove(key) {
-        const hashKey = this.getHasCode(key);
+        const hashKey = this.getHashCode(key);
         if (this.table[hashKey] != null) {
             if (this.table[hashKey].key == key) {
                 delete this.table[hashKey];
@@ -75,10 +75,10 @@ class HashTableLinearProbing extends HashTable {
 
 
     verifyRemoveSideEffect(key, removePosition) {
-        const hashKey = this.getHasCode(key);
+        const hashKey = this.getHashCode(key);
         let position = removePosition +1;
         while(this.table[position] != null){
-            const hashKeyPosition = this.getHasCode(this.table[position].key);
+            const hashKeyPosition = this.getHashCode(this.table[position].key);
             if (hashKeyPosition <= hashKey || hashKeyPosition <= removePosition ) {
                 this.table[removePosition] = this.table[position];
                 delete this.table[position];

@@ -16,7 +16,7 @@ class HashTableSeparateChaining extends HashTable {
     put(key, value) {
         if (key != null && value != null) {
 
-            const hashKey = this.getHasCode(key);
+            const hashKey = this.getHashCode(key);
             if (this.table[hashKey] == null) {
                 this.table[hashKey] = new LinkedList();
             }
@@ -28,7 +28,7 @@ class HashTableSeparateChaining extends HashTable {
     }
 
     get(key) {
-        const hashKey = this.getHasCode(key);
+        const hashKey = this.getHashCode(key);
         const linkedList = this.table[hashKey];
         if (linkedList.size() > 0 && !linkedList.isEmpty()) {
             let current = linkedList.getHead();
@@ -42,7 +42,7 @@ class HashTableSeparateChaining extends HashTable {
         return undefined;
     }
     remove(key) {
-        const hashKey = this.getHasCode(key);
+        const hashKey = this.getHashCode(key);
         const linkedList = this.table[hashKey];
         if (linkedList.size() > 0 && !linkedList.isEmpty()) {
             let current = linkedList.getHead();
