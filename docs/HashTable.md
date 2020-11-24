@@ -1,36 +1,28 @@
 # What is HashTable ? 
->**
+>  
 
-### Difference Between Dictionary & HashTable
+> wiki definition
 
-## List Of Operations Available 
+
+## What is Hashing ? 
+
+>
+
+## Hashtable Methods 
 
 * __put__
 * __remove__
 * __get__
-* __hasKey__
-* __getHashCode__
 
+# Implementation in Javascript 
 
-### Implementation of HashTable in Javascript :
+## put
+## remove
+## get
 
-```javascript
-
-    class HashTable {
-        constructor() {
-            this.table = {};
-        }
-    }
-
-```
-
-## getHasCode
+## Hash Function 
 
 ```javascript
-
-    getHashCode(key) {
-        return this._loseloseHashCode(key);
-    }
 
     _loseloseHashCode(key) {
         if (typeof key == "number") {
@@ -79,6 +71,8 @@
     }
 ```
 
+## Helper Methods 
+
 ## KeyValues
 
 ```javascript
@@ -108,7 +102,9 @@
 ```
 
 
-### Hash Collisions
+get the full source code [here](https://github.com/swarup260/Learning_Algorithms/blob/master/data_structure/HashTable.js)
+
+## Hash Collisions 
 
 * __Linear Probing__
 * __Separate Chaining__
@@ -117,3 +113,5 @@
 
 | Methods       | Complexity    |
 | ------------- |:-------------:| 
+
+In next post i will explain Linear Probing
