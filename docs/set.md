@@ -1,24 +1,26 @@
-# What is Set? 
-> *Sets are a type of associative containers in which each element has to be unique because the value of the element identifies it. The value of the element cannot be modified once it is added to the set, though it is possible to remove and add the modified value of that element*  - [*geeksforgeeks*](https://www.geeksforgeeks.org/)
+# Set
 
-## List Of Operations Available  
+## What is Set?
 
-* __Add__: Insert an element in the set if present not.
-* __Delete__: Remove an element from the set. 
-* __Has__ : Return *true* if the an element is present or else return *false*.
-* __Size__: Return Size of the Set.
-* __isEmpty__ : Check if the set is empty if empty return true else false.
-* __Union__: Return new Set which contains all the elements from two sets.
-* __Intersection__: Return new Set which contains the intersecting element from two sets.
-* __Difference__: Return new Set only containing the elements which are not present in other sets.
-* __isSubset__: Return true if all elements are present in the given otherSet.
+> _Sets are a type of associative containers in which each element has to be unique because the value of the element identifies it. The value of the element cannot be modified once it is added to the set, though it is possible to remove and add the modified value of that element_ - [_geeksforgeeks_](https://www.geeksforgeeks.org/)
 
->  __Set Only Contains Unique Elements in it.__
+### List Of Operations Available
 
-### Implementation of Set in Javascript 
+* **Add**: Insert an element in the set if present not.
+* **Delete**: Remove an element from the set. 
+* **Has** : Return _true_ if the an element is present or else return _false_.
+* **Size**: Return Size of the Set.
+* **isEmpty** : Check if the set is empty if empty return true else false.
+* **Union**: Return new Set which contains all the elements from two sets.
+* **Intersection**: Return new Set which contains the intersecting element from two sets.
+* **Difference**: Return new Set only containing the elements which are not present in other sets.
+* **isSubset**: Return true if all elements are present in the given otherSet.
 
-Let start by defining an [ES6 class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) class name __Set__ that has one property, *items* which will hold the elements in the set.we are using objects to store elements in the set instead, you can also use an array.
+> **Set Only Contains Unique Elements in it.**
 
+#### Implementation of Set in Javascript
+
+Let start by defining an [ES6 class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) class name **Set** that has one property, _items_ which will hold the elements in the set.we are using objects to store elements in the set instead, you can also use an array.
 
 ```javascript
  class Set {
@@ -28,13 +30,13 @@ Let start by defining an [ES6 class](https://developer.mozilla.org/en-US/docs/We
  }
 ```
 
-## Add
+### Add
 
-While inserting an element into the Set, we first need to check if it already exists or not. By using __has__ a method.
-1. if the element is already present 
-    * Return false
-2. Else insert an element into the Set.
-    * Set items property key and value as an element.
+While inserting an element into the Set, we first need to check if it already exists or not. By using **has** a method. 1. if the element is already present
+
+* Return false
+  1. Else insert an element into the Set.
+* Set items property key and value as an element.
 
 ```javascript
  add(element) {
@@ -45,11 +47,10 @@ While inserting an element into the Set, we first need to check if it already ex
     return false;
     }
 ```
-## Has
 
-Check if the element already exists in the set or not.
-You can loop until the entire the items and compare the given element with the set elements. *If a match is found then return __true__ or else __false__.*
-Or you can javascript built-in method of [Object.prototype.hasOwnProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
+### Has
+
+Check if the element already exists in the set or not. You can loop until the entire the items and compare the given element with the set elements. _If a match is found then return **true** or else **false**._ Or you can javascript built-in method of [Object.prototype.hasOwnProperty\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
 
 ```javascript
  has(element) {
@@ -58,22 +59,20 @@ Or you can javascript built-in method of [Object.prototype.hasOwnProperty()](htt
     }
 ```
 
-## Delete
+### Delete
+
 Remove an element from the set.
+
 * Check if the element is already present
-    * If not present return __false__.
-    * Else __delete__ the element from the *items* property.
-```javascript
 
- delete(element) {
-        if (this.has(element)) {
-            delete this.items[element];
-            return true;
-        }
-        return false;
-    }
+  * If not present return **false**.
+  * Else **delete** the element from the _items_ property.
 
-```
+    \`\`\`javascript
+
+  delete\(element\) { if \(this.has\(element\)\) { delete this.items\[element\]; return true; } return false; }
+
+```text
 ## Elements
 Return all elements present in the Set
 
@@ -89,23 +88,23 @@ Return all elements present in the Set
     }
 ```
 
-> __Set__ Data Structure was also introduced in the ES6, javascript all the methods defined until know is present in Standard ES6 [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set).
+> **Set** Data Structure was also introduced in the ES6, javascript all the methods defined until know is present in Standard ES6 [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set).
 
-# Set Operations
+## Set Operations
 
-In mathematics, a [set](https://en.wikipedia.org/wiki/Set_(mathematics)) also has some basic operations such as *union*, *intersection*, and *difference*.
+In mathematics, a \[set\]\([https://en.wikipedia.org/wiki/Set\_\(mathematics](https://en.wikipedia.org/wiki/Set_%28mathematics)\)\) also has some basic operations such as _union_, _intersection_, and _difference_.
 
-## Union
-The union of the sets A and B,  denoted by __A ∪ B__. It is set only contains *distinct elements* from set A or set B or both.
+### Union
 
-```
+The union of the sets A and B, denoted by **A ∪ B**. It is set only contains _distinct elements_ from set A or set B or both.
+
+```text
 Eg :- 
 
 Set A = {1,2,3,4,5,6}
 Set B = {3,4,5,10}
 
 A ∪ B = { 1,2,3,4,5,6,10 }
-
 ```
 
 ![Set Operation Union](https://dev-to-uploads.s3.amazonaws.com/i/wav5nevjooxh1ouitx39.png)
@@ -128,22 +127,21 @@ union(otherSet){
         });
 
         return unionSet;
-        
+
     }
 ```
 
+### Intersection
 
-## Intersection
-The intersection of the sets A and B, denoted by __A ∩ B__, is the Set of elements belongs to both A and B, only *common elements*.
+The intersection of the sets A and B, denoted by **A ∩ B**, is the Set of elements belongs to both A and B, only _common elements_.
 
-```
+```text
 Eg :- 
 
 Set A = {1,2,3,4,5,6}
 Set B = {3,4,5,10}
 
 A ∩ B = {3,4,5 }
-
 ```
 
 ![Set Operation Intersection](https://dev-to-uploads.s3.amazonaws.com/i/ywj3tme2dnq04a2kjd8k.jpg)
@@ -163,21 +161,22 @@ A ∩ B = {3,4,5 }
                 intersectionSet.add(element);
             }
         });
-        
+
         return intersectionSet;
     }
 ```
-## Difference
-The difference between sets A and B is denoted by __A – B__. Only containing *elements of set A but not in B*.
 
-```
+### Difference
+
+The difference between sets A and B is denoted by **A – B**. Only containing _elements of set A but not in B_.
+
+```text
 Eg :- 
 
 Set A = {1,2,3,4,5,6}
 Set B = {3,4,5,10}
 
 A – B = {1,2,6}
-
 ```
 
 ![Set Operation Difference](https://dev-to-uploads.s3.amazonaws.com/i/awhve9zscudal5fjun2u.png)
@@ -200,9 +199,10 @@ difference(otherSet){
         return differenceSet;
     }
 ```
-## isSubset
-A is a subset of B, denoted by __A ⊆ B__ or equivalently.if only if all the *elements of A is present in B*.
 
+### isSubset
+
+A is a subset of B, denoted by **A ⊆ B** or equivalently.if only if all the _elements of A is present in B_.
 
 ![Set Operation isSubset](https://dev-to-uploads.s3.amazonaws.com/i/h2uuenvu080xfevo6va7.jpg)
 
@@ -230,17 +230,13 @@ isSubset(otherSet){
     }
 ```
 
-
 you get the full source [here](https://github.com/swarup260/Learning_Algorithms/blob/master/data_structure/Set.js)
 
+#### Conclusion :
 
-
-### Conclusion : 
-
-
-| Methods       | Complexity    |
-| ------------- |:-------------:| 
-| Add           | O(n)          | 
-| Delete        | O(1)          |  
-| Has           | O(n)          | 
+| Methods | Complexity |
+| :--- | :---: |
+| Add | O\(n\) |
+| Delete | O\(1\) |
+| Has | O\(n\) |
 

@@ -1,29 +1,30 @@
-# What is HashTable ? 
->  
+# HashTable
+
+## What is HashTable ?
 
 > wiki definition
 
+### What is Hashing ?
 
-## What is Hashing ? 
+&gt;
 
->
+### Hashtable Methods
 
-## Hashtable Methods 
+* **put**
+* **remove**
+* **get**
 
-* __put__
-* __remove__
-* __get__
+## Implementation in Javascript
 
-# Implementation in Javascript 
+### put
 
-## put
-## remove
-## get
+### remove
 
-## Hash Function 
+### get
+
+### Hash Function
 
 ```javascript
-
     _loseloseHashCode(key) {
         if (typeof key == "number") {
             return key;
@@ -35,11 +36,10 @@
         }
         return code % 37;
     }
-
-
 ```
 
-## Put
+### Put
+
 ```javascript
     put(key, value) {
         if (key != null && value != null) {
@@ -50,7 +50,9 @@
         return false;
     }
 ```
-## Remove
+
+### Remove
+
 ```javascript
     remove(key) {
         const keyHash = this.getHashCode(key);
@@ -63,7 +65,8 @@
     }
 ```
 
-## Get
+### Get
+
 ```javascript
     get(key) {
         const keyHash = this.getHashCode(key);
@@ -71,9 +74,9 @@
     }
 ```
 
-## Helper Methods 
+### Helper Methods
 
-## KeyValues
+### KeyValues
 
 ```javascript
     keyValues() {
@@ -86,7 +89,8 @@
         return keyValuePairs;
     }
 ```
-## ForEach
+
+### ForEach
 
 ```javascript
     forEach(callback) {
@@ -101,17 +105,18 @@
     }
 ```
 
-
 get the full source code [here](https://github.com/swarup260/Learning_Algorithms/blob/master/data_structure/HashTable.js)
 
-## Hash Collisions 
+### Hash Collisions
 
-* __Linear Probing__
-* __Separate Chaining__
+* **Linear Probing**
+* **Separate Chaining**
 
-### Conclusion : 
+#### Conclusion :
 
-| Methods       | Complexity    |
-| ------------- |:-------------:| 
+| Methods | Complexity |
+| :--- | :---: |
+
 
 In next post i will explain Linear Probing
+

@@ -1,26 +1,25 @@
-# What is HashTable Linear Probing ? 
->**
+# What is HashTable Linear Probing ?
 
+> \*\*
 
-## List Of Operations Available 
+## List Of Operations Available
 
-* All methods will same as the  __[single linked list](./HashTable.md)__ . we will only overwrite method.
-.
+* All methods will same as the  [**single linked list**](hashtable.md) . we will only overwrite method.
+
+  .
 
 ### Implementation of HashTable in Javascript :
 
 ```javascript
-
     class HashTable {
         constructor() {
             this.table = {};
         }
     }
-
 ```
 
-
 ## Put
+
 ```javascript
     put(key, value) {
         if (key != null && value != null) {
@@ -40,7 +39,9 @@
         return false;
     }
 ```
+
 ## Remove
+
 ```javascript
     remove(key) {
         const hashKey = this.getHashCode(key);
@@ -68,6 +69,7 @@
 ```
 
 ## Get
+
 ```javascript
     get(key) {
         const hashKey = this.getHashCode(key);
@@ -107,9 +109,9 @@
     }
 ```
 
-
-
-### Conclusion : 
+### Conclusion :
 
 | Methods | Complexity |
-| ------- | :--------: |
+| :--- | :---: |
+
+
