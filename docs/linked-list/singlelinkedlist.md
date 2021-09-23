@@ -1,4 +1,4 @@
-# What is Linked List?
+# Single Linked List
 
 > _A linked list consists of nodes where each node contains a data field and a reference\(link\) to the next node in the list._ - geeksforgeeks.org
 

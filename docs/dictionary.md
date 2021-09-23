@@ -1,4 +1,4 @@
-# What is a Dictionary?
+# Dictionary
 
 > _A dictionary is a general-purpose data structure for storing a group of objects. A dictionary has a set of keys and each key has a single associated value._ - [_Wikibooks_](https://en.wikibooks.org/wiki/A-level_Computing/AQA/Paper_1/Fundamentals_of_data_structures/Dictionaries#:~:text=A%20dictionary%20is%20a%20general,has%20a%20single%20associated%20value.&text=Different%20languages%20enforce%20different%20type,often%20implemented%20as%20hash%20tables.)
 

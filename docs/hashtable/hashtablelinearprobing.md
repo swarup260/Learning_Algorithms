@@ -4,7 +4,7 @@
 
 ## List Of Operations Available
 
-* All methods will same as the  [**single linked list**](hashtable.md) . we will only overwrite method.
+* All methods will same as the  [**single linked list**](./) . we will only overwrite method.
 
   .
 
