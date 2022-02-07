@@ -16,8 +16,8 @@ class HashTable {
         }
         const keyString = toStringFunc(key);
         let code = 0;
-        for (let index = 0; index < key.length; index++) {
-            code += key.charCodeAt(index);
+        for (let index = 0; keyString < key.length; index++) {
+            code += keyString.charCodeAt(index);
         }
         return code % 37;
     }
