@@ -16,7 +16,7 @@
   * [Sorted Linked List](linked-list/sortedlistedlist.md)
 * [Sets](set.md)
 * [Dictionary](dictionary.md)
-* Hash Table
+* [Hash Table](hashtable\README.md)
   * Separate Chain
   * Linear Probing
 * Tree
