@@ -1,20 +1,21 @@
 # Learning  Data Structure & Algorithms
 
-# What is Data Structures ?
+### What are Data Structures?
 
-> *Data Structure is a way of organizing the data so that data can be retrieved effectively.*
-## List Of Data Structures.
- 
-* [Stack](./docs/Stack.md)
-* [Queue](./docs/Queue.md)
-* [Deque](./docs/Deque.md)
+> _Data Structure is a way of organizing the data so that data can be retrieved effectively._
+
+### List Of Data Structures.
+
+* [Stack](stack.md)
+* [Queue](queue.md)
+* [Deque](deque.md)
 * Linked List
-  * [Single Linked List](./docs/SingleLinkedList.md)
-  * [Doubly Linked List](./docs/DoublyLinkedList.md)
-  * [Circular Linked List](./docs/CircularLinkedList.md)
-  * [Sorted Linked List](./docs/SortedListedList.md)
-* [Sets](./docs/Set.md)
-* [Dictionary](./docs/Dictionary.md)
+  * [Single Linked List](linked-list/singlelinkedlist.md)
+  * [Doubly Linked List](linked-list/doublylinkedlist.md)
+  * [Circular Linked List](linked-list/circularlinkedlist.md)
+  * [Sorted Linked List](linked-list/sortedlistedlist.md)
+* [Sets](set.md)
+* [Dictionary](dictionary.md)
 * Hash Table
   * Separate Chain
   * Linear Probing
@@ -24,4 +25,4 @@
     * AVL Tree
     * RedBlack Tree
 * Graph
-  
+

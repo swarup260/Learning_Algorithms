@@ -1,13 +1,35 @@
-const {
-    KeyValue
-} = require('./models/KeyValue');
-const {
-    toStringFunc
-} = require('../utils/function');
+# What is HashTable ? 
+>**
 
-class HashTable {
-    constructor() {
-        this.table = {};
+### Difference Between Dictionary & HashTable
+
+## List Of Operations Available 
+
+* __put__
+* __remove__
+* __get__
+* __hasKey__
+* __getHashCode__
+
+
+### Implementation of HashTable in Javascript :
+
+```javascript
+
+    class HashTable {
+        constructor() {
+            this.table = {};
+        }
+    }
+
+```
+
+## getHasCode
+
+```javascript
+
+    getHashCode(key) {
+        return this._loseloseHashCode(key);
     }
 
     _loseloseHashCode(key) {
@@ -16,18 +38,17 @@ class HashTable {
         }
         const keyString = toStringFunc(key);
         let code = 0;
-        for (let index = 0; keyString < key.length; index++) {
-            code += keyString.charCodeAt(index);
+        for (let index = 0; index < key.length; index++) {
+            code += key.charCodeAt(index);
         }
         return code % 37;
     }
 
 
-    getHashCode(key) {
-        return this._loseloseHashCode(key);
-    }
+```
 
-
+## Put
+```javascript
     put(key, value) {
         if (key != null && value != null) {
             const keyHash = this.getHashCode(key);
@@ -36,7 +57,9 @@ class HashTable {
         }
         return false;
     }
-
+```
+## Remove
+```javascript
     remove(key) {
         const keyHash = this.getHashCode(key);
         if (this.table[keyHash]) {
@@ -46,28 +69,19 @@ class HashTable {
         }
         return undefined;
     }
+```
 
+## Get
+```javascript
     get(key) {
         const keyHash = this.getHashCode(key);
         return this.table[keyHash] != null ? this.table[keyHash].value : undefined;
     }
+```
 
-    djb2HashCode(key) {
-        const tableKey = toStringFunc(key); // {1}
-        let hash = 5381; // {2}
-        for (let i = 0; i < tableKey.length; i++) { // {3}
-            hash = (hash * 33) + tableKey.charCodeAt(i); // {4}
-        }
-        return hash % 1013; // {5}
-    }
+## KeyValues
 
-    isEmpty() {
-        return Object.keys(this.table).length == 0;
-    }
-    size() {
-        return Object.keys(this.table).length;
-    }
-
+```javascript
     keyValues() {
         const keyValuePairs = [];
         for (const key in this.table) {
@@ -77,19 +91,10 @@ class HashTable {
         }
         return keyValuePairs;
     }
-    
-    toString() {
-        if (this.isEmpty()) {
-            return "";
-        }
-        let keyValuePairs = this.keyValues();
-        let string = `${keyValuePairs[0].toString()}`
-        for (let index = 1; index < keyValuePairs.length; index++) {
-            string = `${string}, ${keyValuePairs[index].toString()}`
-        }
-        return string;
-    }
+```
+## ForEach
 
+```javascript
     forEach(callback) {
         let keyValuePairs = this.keyValues();
         for (let index = 0; index < keyValuePairs.length; index++) {
@@ -100,10 +105,15 @@ class HashTable {
 
         }
     }
+```
 
-}
 
+### Hash Collisions
 
-module.exports = {
-    HashTable
-}
+* __Linear Probing__
+* __Separate Chaining__
+
+### Conclusion : 
+
+| Methods       | Complexity    |
+| ------------- |:-------------:| 
